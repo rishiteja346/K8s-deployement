@@ -1,0 +1,17 @@
+#1. create namespace and apply manifests
+kubectl apply -f dvwa-k8s.yaml
+
+#2. wait for pods
+kubectl -n dvwa-lab get pods --watch
+
+#3. check services
+kubectl -n dvwa-lab get svc
+
+#4. create a Service of type NodePort
+kubectl -n dvwa-lab get svc dvwa-web -o yaml
+
+# get minikube IP:
+minikube ip
+
+#for acess
+kubectl -n dvwa-lab port-forward svc/dvwa-web 8000:80
