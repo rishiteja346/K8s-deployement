@@ -1,0 +1,7 @@
+namespace/dvwa-lab created
+secret/dvwa-secret created
+persistentvolumeclaim/dvwa-mysql-pvc created
+deployment.apps/dvwa-mysql created
+service/dvwa-mysql created
+deployment.apps/dvwa-web created
+service/dvwa-web created
