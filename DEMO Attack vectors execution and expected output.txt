@@ -1,0 +1,68 @@
+DEMO Attack vectors execution
+
+
+Attack 1 — SQL Injection (SQLi)
+
+What: Demonstrate classic SQLi on the “SQL Injection (GET)” or “SQL Injection (Blind)” module in DVWA.
+
+Steps:
+
+1.Log in to DVWA web UI (admin/password).
+
+2.Set Security to low or medium (for demo).
+
+3.Go to SQL Injection (GET) page; there's a parameter (e.g., id) or an input field to fetch a user by ID.
+
+Example payload into input (one-line) to illustrate login bypass / list retrieval:
+
+in bash 
+
+' OR '1'='1
+
+
+4.Submit; you should see the query returns many rows or bypasses filters.
+
+Expected: The site returns user rows or shows data that should be protected — demonstrating a successful SQL injection.
+
+
+Attack 2 — Stored Cross-Site Scripting
+
+What: Stored XSS lets an attacker persist JavaScript that executes in other users’ browsers.
+
+Steps:
+
+1.In DVWA, go to XSS (Stored) page.
+
+2.Submit a message/comment with a benign script to show execution. Example payload:
+
+html:
+
+<script>alert('XSS demo')</script>
+
+
+3.Submit and then reload the page or view the message.
+
+Expected: A browser alert pops up with "XSS demo" — demonstrating script execution in victim’s browser.
+
+
+Attack 3 — Command Injection (OS Command Injection)
+
+What: DVWA includes a Command Injection module demonstrating unsanitized shell calls.
+
+Steps:
+
+1.Go to Command Injection module in DVWA. Often there's a form that pings an IP or host and prints results.
+
+Example input that demonstrates command injection (benign local):
+
+127.0.0.1; echo injected_marker
+
+
+Submit.
+
+Expected: The output includes injected_marker showing that the input was appended to the shell command and executed. On Linux you might see the marker in the returned output.
+
+
+
+
+
